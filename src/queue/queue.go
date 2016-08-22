@@ -1,6 +1,9 @@
 package queue
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Node struct {
 	value int
@@ -13,11 +16,19 @@ type Queue struct {
 	count int
 }
 
-func (q *Queue) Pop() *Node {
+func NewQueue() *Queue {
+	return &Queue{}
+}
+
+func newNode(value int) *Node {
+	return &Node{value}
+}
+
+func (q *Queue) Pop() (int, error) {
 	head := q.head
 
 	if head == nil {
-		return nil
+		return 0, errors.New("Empty Stack")
 	}
 
 	q.nodes = q.nodes[1:]
@@ -25,16 +36,17 @@ func (q *Queue) Pop() *Node {
 	if head == q.tail {
 		q.head = nil
 		q.count--
-		return head
+		return head.value, nil
 	}
+
 	q.head = q.nodes[0]
 	q.count--
 
-	return head
+	return head.value, nil
 }
 
 func (q *Queue) Add(value int) {
-	node := NewNode(value)
+	node := newNode(value)
 
 	if q.count == 0 {
 		q.head = node
@@ -58,12 +70,4 @@ func (q *Queue) PrintAll() {
 		i++
 	}
 
-}
-
-func NewQueue() *Queue {
-	return &Queue{}
-}
-
-func NewNode(value int) *Node {
-	return &Node{value}
 }
