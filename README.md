@@ -1,2 +1,3 @@
-####Classic ADT implementation in GOlang.
-I'm beginner in GO, in programming also. It's just for for study, GO and ADT.
+#### ADT implementation in GO.
+I'm beginner in golang, and programming also. 
+This repository will hold my ADT implementation in GO.
