@@ -6,7 +6,7 @@ import (
 )
 
 type Node struct {
-	value int
+	value interface{}
 }
 
 type Queue struct {
@@ -20,11 +20,11 @@ func NewQueue() *Queue {
 	return &Queue{}
 }
 
-func newNode(value int) *Node {
+func newNode(value interface{}) *Node {
 	return &Node{value}
 }
 
-func (q *Queue) Pop() (int, error) {
+func (q *Queue) Pop() (interface{}, error) {
 	head := q.head
 
 	if head == nil {
@@ -45,7 +45,7 @@ func (q *Queue) Pop() (int, error) {
 	return head.value, nil
 }
 
-func (q *Queue) Add(value int) {
+func (q *Queue) Add(value interface{}) {
 	node := newNode(value)
 
 	if q.count == 0 {
