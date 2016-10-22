@@ -24,8 +24,10 @@ func TestStack_Push(t *testing.T) {
 
 func TestStack_Pop(t *testing.T) {
 	stack := NewStack()
+	test_stack := NewStack()
+
 	stack.Push(1)
-	stack.Push(2)
+	stack.Push(test_stack)
 	stack.Push(4)
 
 	value, error := stack.Pop()
