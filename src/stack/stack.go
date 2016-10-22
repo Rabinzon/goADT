@@ -6,10 +6,10 @@ import (
 )
 
 type Node struct {
-	value int
+	value interface{}
 }
 
-func newNode(value int) *Node {
+func newNode(value interface{}) *Node {
 	return &Node{value}
 }
 
@@ -23,7 +23,7 @@ func NewStack() *Stack {
 	return &Stack{}
 }
 
-func (s *Stack) Push(value int) {
+func (s *Stack) Push(value interface{}) {
 	node := newNode(value)
 	s.nodes = append(s.nodes, node)
 	s.top = node
@@ -34,7 +34,7 @@ func (s *Stack) Empty() bool {
 	return s.count == 0
 }
 
-func (s *Stack) Pop() (int, error) {
+func (s *Stack) Pop() (interface{}, error) {
 	if s.Empty() {
 		return 0, errors.New("Empty Stack")
 	}
