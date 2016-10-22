@@ -28,9 +28,9 @@ func TestQueue_Add(t *testing.T) {
 
 func TestQueue_Pop(t *testing.T) {
 	q := NewQueue()
-
+	r := NewQueue()
 	q.Add(1)
-	q.Add(24)
+	q.Add(r)
 	q.Add(33)
 
 	v, error := q.Pop()
